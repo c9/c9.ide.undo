@@ -41,7 +41,7 @@ define(function(require, exports, module) {
         var canUndo = canDo("canUndo");
         var canRedo = canDo("canRedo");
 
-        var loaded = true;
+        var loaded = false;
         function load(callback){
             if (loaded) return false;
             loaded = true;
