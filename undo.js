@@ -47,21 +47,21 @@ define(function(require, exports, module) {
             loaded = true;
 
             commands.addCommand({
-                name: "undo",
+                name: "c9_undo",
                 exec: undo,
                 isAvailable : canUndo
             }, plugin);
             commands.addCommand({
-                name: "redo",
+                name: "c9_redo",
                 exec: redo,
                 isAvailable : canRedo
             }, plugin);
 
             menus.addItemByPath("Edit/Undo", new apf.item({
-                command : "undo"
+                command : "c9_undo"
             }), 100, plugin);
             menus.addItemByPath("Edit/Redo", new apf.item({
-                command : "redo"
+                command : "c9_redo"
             }), 200, plugin);
         }
 
