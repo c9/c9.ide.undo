@@ -4,14 +4,6 @@
  * @copyright 2010, Ajax.org B.V.
  * @license GPLv3 <http://www.gnu.org/licenses/gpl.txt>
  */
-
- /**
- * Refactor Module for the Cloud9 IDE
- *
- * @copyright 2010, Ajax.org B.V.
- * @license GPLv3 <http://www.gnu.org/licenses/gpl.txt>
- */
-/*global define document apf*/
 "use strict";
 define(function(require, exports, module) {
     main.consumes = [
@@ -25,6 +17,7 @@ define(function(require, exports, module) {
         var menus       = imports.menus;
         var commands    = imports.commands;
         var tabs        = imports.tabs;
+        var apf         = imports.apf;
 
         /***** Initialization *****/
 
