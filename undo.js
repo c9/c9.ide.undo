@@ -26,8 +26,8 @@ define(function(require, exports, module) {
 
         function canDo (actionName) {
             return function () {
-                var page = tabs.focussedPage;
-                return  page && page.document.undoManager[actionName]();
+                var tab = tabs.focussedPage;
+                return  tab && tab.document.undoManager[actionName]();
             };
         }
 
