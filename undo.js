@@ -7,13 +7,13 @@
 "use strict";
 define(function(require, exports, module) {
     main.consumes = [
-        "plugin", "menus", "tabManager", "commands", "apf"
+        "Plugin", "menus", "tabManager", "commands", "apf"
     ];
     main.provides = ["undo"];
     return main;
 
     function main(options, imports, register) {
-        var Plugin      = imports.plugin;
+        var Plugin      = imports.Plugin;
         var menus       = imports.menus;
         var commands    = imports.commands;
         var tabs        = imports.tabManager;
