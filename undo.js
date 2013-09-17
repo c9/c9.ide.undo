@@ -1,7 +1,7 @@
 /**
  * Undo Module for the Cloud9 IDE
- *
- * @copyright 2010, Ajax.org B.V.
+ * @author Mostafa Eweda <mostafa@c9.io>
+ * @copyright 2013, Ajax.org B.V.
  * @license GPLv3 <http://www.gnu.org/licenses/gpl.txt>
  */
 "use strict";
@@ -95,16 +95,16 @@ define(function(require, exports, module) {
         /***** Register and define API *****/
 
         /**
-         * Finder implementation using nak
-         **/
+         * Undo module for Cloud9 IDE
+         */
         plugin.freezePublicAPI({
             /**
-             * Reverts last made change
+             * Reverts the last edit made to the currently focussed tab document
              */
             undo: undo,
 
             /**
-             * Re-executes last reverted change
+             * Re-executes the last reverted edit in the currently focussed tab document
              */
             redo: redo
         });
