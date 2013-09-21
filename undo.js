@@ -7,16 +7,16 @@
 "use strict";
 define(function(require, exports, module) {
     main.consumes = [
-        "plugin", "menus", "tabs", "commands", "apf"
+        "Plugin", "menus", "tabManager", "commands", "apf"
     ];
     main.provides = ["undo"];
     return main;
 
     function main(options, imports, register) {
-        var Plugin      = imports.plugin;
+        var Plugin      = imports.Plugin;
         var menus       = imports.menus;
         var commands    = imports.commands;
-        var tabs        = imports.tabs;
+        var tabs        = imports.tabManager;
         var apf         = imports.apf;
 
         /***** Initialization *****/
@@ -26,8 +26,8 @@ define(function(require, exports, module) {
 
         function canDo (actionName) {
             return function () {
-                var page = tabs.focussedPage;
-                return  page && page.document.undoManager[actionName]();
+                var tab = tabs.focussedTab;
+                return  tab && tab.document.undoManager[actionName]();
             };
         }
 
@@ -61,7 +61,7 @@ define(function(require, exports, module) {
         /***** Methods *****/
         function undo() {
             if (canUndo() && apf.isChildOf(tabs.container, apf.activeElement, true))
-                tabs.focussedPage.document.undoManager.undo();
+                tabs.focussedTab.document.undoManager.undo();
             // else if (apf.activeElement == self.trFiles) {
                 //@todo the way undo is implemented doesn't work right now
                 //trFiles.getActionTracker().undo();
@@ -70,7 +70,7 @@ define(function(require, exports, module) {
 
         function redo() {
             if (canRedo() && apf.isChildOf(tabs.container, apf.activeElement, true))
-                tabs.focussedPage.document.undoManager.redo();
+                tabs.focussedTab.document.undoManager.redo();
             // else if (apf.activeElement == self.trFiles) {
                 //@todo the way undo is implemented doesn't work right now
                 //trFiles.getActionTracker().redo();
