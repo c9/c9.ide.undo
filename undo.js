@@ -1,11 +1,6 @@
-/**
- * Undo Module for the Cloud9 IDE
- * @author Mostafa Eweda <mostafa@c9.io>
- * @copyright 2013, Ajax.org B.V.
- * @license GPLv3 <http://www.gnu.org/licenses/gpl.txt>
- */
-"use strict";
 define(function(require, exports, module) {
+    "use strict";
+    
     main.consumes = [
         "Plugin", "menus", "tabManager", "commands", "apf"
     ];
@@ -96,6 +91,7 @@ define(function(require, exports, module) {
 
         /**
          * Undo module for Cloud9 IDE
+         * @singleton
          */
         plugin.freezePublicAPI({
             /**
