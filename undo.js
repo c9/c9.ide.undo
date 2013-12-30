@@ -37,12 +37,14 @@ define(function(require, exports, module) {
             commands.addCommand({
                 name: "c9_undo",
                 exec: undo,
-                isAvailable : canUndo
+                isAvailable : canUndo,
+                bindKey: {mac: "Command-Z", win: "Ctrl-Z"}
             }, plugin);
             commands.addCommand({
                 name: "c9_redo",
                 exec: redo,
-                isAvailable : canRedo
+                isAvailable : canRedo,
+                bindKey: {mac: "Command-Shift-Z|Command-Y", win: "Ctrl-Shift-Z|Ctrl-Y"}
             }, plugin);
 
             menus.addItemByPath("Edit/Undo", new apf.item({
