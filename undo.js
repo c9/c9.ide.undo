@@ -56,8 +56,10 @@ define(function(require, exports, module) {
         }
 
         /***** Methods *****/
-        function undo() {
-            if (canUndo() && apf.isChildOf(tabs.container, apf.activeElement, true))
+        function undo(editor) {
+            if (editor && editor.ace)
+                editor.ace.execCommand("undo");
+            else if (canUndo() && apf.isChildOf(tabs.container, apf.activeElement, true))
                 tabs.focussedTab.document.undoManager.undo();
             // else if (apf.activeElement == self.trFiles) {
                 //@todo the way undo is implemented doesn't work right now
@@ -65,8 +67,10 @@ define(function(require, exports, module) {
             // }
         }
 
-        function redo() {
-            if (canRedo() && apf.isChildOf(tabs.container, apf.activeElement, true))
+        function redo(editor) {
+            if (editor && editor.ace)
+                editor.ace.execCommand("redo");
+            else if (canRedo() && apf.isChildOf(tabs.container, apf.activeElement, true))
                 tabs.focussedTab.document.undoManager.redo();
             // else if (apf.activeElement == self.trFiles) {
                 //@todo the way undo is implemented doesn't work right now
