@@ -96,7 +96,7 @@ define(function(require, exports, module) {
         /***** Register and define API *****/
 
         /**
-         * Undo module for Cloud9 IDE
+         * Undo module for Cloud9
          * @singleton
          */
         plugin.freezePublicAPI({
