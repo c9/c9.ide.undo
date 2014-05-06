@@ -8,16 +8,16 @@ define(function(require, exports, module) {
     return main;
 
     function main(options, imports, register) {
-        var Plugin      = imports.Plugin;
-        var menus       = imports.menus;
-        var commands    = imports.commands;
-        var tabs        = imports.tabManager;
-        var apf         = imports.apf;
+        var Plugin = imports.Plugin;
+        var menus = imports.menus;
+        var commands = imports.commands;
+        var tabs = imports.tabManager;
+        var apf = imports.apf;
 
         /***** Initialization *****/
 
         var plugin = new Plugin("Ajax.org", main.consumes);
-        var emit   = plugin.getEmitter();
+        var emit = plugin.getEmitter();
 
         function canDo (actionName) {
             return function () {
@@ -30,28 +30,28 @@ define(function(require, exports, module) {
         var canRedo = canDo("canRedo");
 
         var loaded = false;
-        function load(callback){
+        function load(callback) {
             if (loaded) return false;
             loaded = true;
 
             commands.addCommand({
                 name: "c9_undo",
                 exec: undo,
-                isAvailable : canUndo,
+                isAvailable: canUndo,
                 bindKey: {mac: "Command-Z", win: "Ctrl-Z"}
             }, plugin);
             commands.addCommand({
                 name: "c9_redo",
                 exec: redo,
-                isAvailable : canRedo,
+                isAvailable: canRedo,
                 bindKey: {mac: "Command-Shift-Z|Command-Y", win: "Ctrl-Shift-Z|Ctrl-Y"}
             }, plugin);
 
             menus.addItemByPath("Edit/Undo", new apf.item({
-                command : "c9_undo"
+                command: "c9_undo"
             }), 100, plugin);
             menus.addItemByPath("Edit/Redo", new apf.item({
-                command : "c9_redo"
+                command: "c9_redo"
             }), 200, plugin);
         }
 
