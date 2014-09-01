@@ -17,14 +17,11 @@ define(function(require, exports, module) {
         /***** Initialization *****/
 
         var plugin = new Plugin("Ajax.org", main.consumes);
-        // var emit = plugin.getEmitter();
+        var emit = plugin.getEmitter();
 
         function canDo (actionName) {
-            return function (editor, args, event) {
+            return function () {
                 var tab = tabs.focussedTab;
-                if (!tab) return;
-                if (event instanceof KeyboardEvent && !tabs.focussed)
-                    return false;
                 return  tab && tab.document.undoManager[actionName]();
             };
         }
@@ -38,23 +35,23 @@ define(function(require, exports, module) {
             loaded = true;
 
             commands.addCommand({
-                name: "undo",
+                name: "c9_undo",
                 exec: undo,
                 isAvailable: canUndo,
                 bindKey: {mac: "Command-Z", win: "Ctrl-Z"}
             }, plugin);
             commands.addCommand({
-                name: "redo",
+                name: "c9_redo",
                 exec: redo,
                 isAvailable: canRedo,
                 bindKey: {mac: "Command-Shift-Z|Command-Y", win: "Ctrl-Shift-Z|Ctrl-Y"}
             }, plugin);
 
             menus.addItemByPath("Edit/Undo", new apf.item({
-                command: "undo"
+                command: "c9_undo"
             }), 100, plugin);
             menus.addItemByPath("Edit/Redo", new apf.item({
-                command: "redo"
+                command: "c9_redo"
             }), 200, plugin);
         }
 
@@ -64,6 +61,10 @@ define(function(require, exports, module) {
                 editor.ace.execCommand("undo");
             else if (canUndo() && apf.isChildOf(tabs.container, apf.activeElement, true))
                 tabs.focussedTab.document.undoManager.undo();
+            // else if (apf.activeElement == self.trFiles) {
+                //@todo the way undo is implemented doesn't work right now
+                //trFiles.getActionTracker().undo();
+            // }
         }
 
         function redo(editor) {
@@ -71,6 +72,10 @@ define(function(require, exports, module) {
                 editor.ace.execCommand("redo");
             else if (canRedo() && apf.isChildOf(tabs.container, apf.activeElement, true))
                 tabs.focussedTab.document.undoManager.redo();
+            // else if (apf.activeElement == self.trFiles) {
+                //@todo the way undo is implemented doesn't work right now
+                //trFiles.getActionTracker().redo();
+            // }
         }
 
 
