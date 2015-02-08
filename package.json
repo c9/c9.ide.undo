@@ -9,14 +9,12 @@
         "url": "http://github.com/c9/c9.ide.undo.git"
     },
     "plugins": {
-        "plugin": {
-            "undo": {}
-        }
+        "undo": {}
     },
     "categories": [
         "core"
     ],
     "licenses": [
-        ""
+        "MIT"
     ]
 }
