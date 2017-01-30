@@ -25,7 +25,7 @@ define(function(require, exports, module) {
                 if (!tab) return;
                 if (event instanceof KeyboardEvent && !tabs.focussed)
                     return false;
-                return  tab && tab.document.undoManager[actionName]();
+                return tab && tab.document.undoManager[actionName]();
             };
         }
 
@@ -41,13 +41,13 @@ define(function(require, exports, module) {
                 name: "undo",
                 exec: undo,
                 isAvailable: canUndo,
-                bindKey: {mac: "Command-Z", win: "Ctrl-Z"}
+                bindKey: { mac: "Command-Z", win: "Ctrl-Z" }
             }, plugin);
             commands.addCommand({
                 name: "redo",
                 exec: redo,
                 isAvailable: canRedo,
-                bindKey: {mac: "Command-Shift-Z|Command-Y", win: "Ctrl-Shift-Z|Ctrl-Y"}
+                bindKey: { mac: "Command-Shift-Z|Command-Y", win: "Ctrl-Shift-Z|Ctrl-Y" }
             }, plugin);
 
             menus.addItemByPath("Edit/Undo", new apf.item({
@@ -75,16 +75,16 @@ define(function(require, exports, module) {
 
 
         /***** Lifecycle *****/
-        plugin.on("load", function(){
+        plugin.on("load", function() {
             load();
         });
-        plugin.on("enable", function(){
+        plugin.on("enable", function() {
 
         });
-        plugin.on("disable", function(){
+        plugin.on("disable", function() {
 
         });
-        plugin.on("unload", function(){
+        plugin.on("unload", function() {
             loaded = false;
         });
 
